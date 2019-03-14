@@ -14,11 +14,18 @@ class App extends Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                // console.log('login user id: ', user.uid);
-                // console.log('name: ', user.displayName);
-                store.dispatch(login(user.uid));
+                let user = firebase.auth().currentUser;
+
+                let userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    photoUrl: user.photoURL,
+                    emailVerified: user.emailVerified,
+                    uid: user.uid,
+                };
+
+                store.dispatch(login(user.uid, userData));
             } else {
-                // console.log('logout');
                 store.dispatch(logout());
                 history.push('/');
             }

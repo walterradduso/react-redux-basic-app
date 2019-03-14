@@ -5,13 +5,19 @@ import {
     twitterAuthProvider
 } from '../firebase';
 
-export const login = (uid) => ({
-    type: 'LOGIN',
-    uid
+import {
+    LOGIN,
+    LOGOUT
+} from "../types";
+
+export const login = (uid, user) => ({
+    type: LOGIN,
+    uid,
+    user
 });
 
 export const logout = () => ({
-    type: 'LOGOUT'
+    type: LOGOUT
 });
 
 export const googleLogin = () => {

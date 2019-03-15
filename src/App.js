@@ -1,28 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import getAppStore from './store';
+import { Provider } from 'react-redux';
+
+import AppRouter, { history } from './routes/AppRouter';
+import { firebase } from './firebase';
+import { login, logout } from './actions/auth';
+
+const store = getAppStore();
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                let user = firebase.auth().currentUser;
+
+                let userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    photoUrl: user.photoURL,
+                    emailVerified: user.emailVerified,
+                    uid: user.uid,
+                };
+
+                store.dispatch(login(user.uid, userData));
+            } else {
+                store.dispatch(logout());
+                history.push('/');
+            }
+        });
+    }
+
+    render() {
+        return (
+            <Provider store={store}>
+                <AppRouter/>
+            </Provider>
+        );
+    }
 }
 
 export default App;

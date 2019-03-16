@@ -6,3 +6,13 @@ body {
 .error {
     color: $red;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.ant-layout-sider-zero-width-trigger {
+    &.ant-layout-sider-zero-width-trigger-left {
+        z-index: 9;
+    }
+}

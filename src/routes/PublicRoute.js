@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 const PublicRoute = ({isAuthenticated, component: Component, ...otherProps}) => (
     <Route {...otherProps} component={(props) => {
         return (
-            isAuthenticated ? <Redirect to='/dashboard' /> : <Component {...props} />
+            isAuthenticated ? <Redirect to='/users' /> : <Component {...props} />
         );
     }} />
 );
 
-const mapStateToProps = (state) => ({
-    isAuthenticated: !!state.auth.uid
+const mapStateToProps = ({ auth }) => ({
+    isAuthenticated: !!auth.uid
 });
 
 export default connect(mapStateToProps)(PublicRoute);

@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+# config files
+/src/firebase/index.js
+
 # production
 /build
 

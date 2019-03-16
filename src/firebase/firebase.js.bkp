@@ -1,0 +1,23 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+const config = {
+    apiKey: "complete-with-your-apiKey",
+    authDomain: "complete-with-your-authDomain",
+    databaseURL: "complete-with-your-databaseURL",
+    projectId: "complete-with-your-projectId",
+    storageBucket: "complete-with-your-storageBucket",
+    messagingSenderId: "complete-with-your-messagingSenderId"
+};
+
+firebase.initializeApp(config);
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
+const twitterAuthProvider = new firebase.auth.TwitterAuthProvider();
+
+export {
+    firebase,
+    googleAuthProvider,
+    facebookAuthProvider,
+    twitterAuthProvider
+};

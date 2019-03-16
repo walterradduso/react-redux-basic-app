@@ -1,0 +1,47 @@
+.users {
+    min-height: 100vh;
+
+    .users-list, .users-new {
+        padding: 24px;
+        background: $white;
+
+        .loading-container {
+            height: 100%;
+        }
+
+        .new-user-btn {
+            float: right;
+        }
+    }
+
+    .table-users {
+        margin-bottom: 20px;
+
+        .table-btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .table-btn {
+                width: 94px;
+                margin-bottom: 5px;
+
+                &.btn-delete {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.users-view {
+    .loading-container {
+        height: 264px;
+    }
+
+    .user-view {
+        margin: auto;
+        width: 200px;
+    }
+}

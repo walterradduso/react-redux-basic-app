@@ -4,6 +4,14 @@
     .users-list, .users-new {
         padding: 24px;
         background: $white;
+
+        .loading-container {
+            height: 100%;
+        }
+
+        .new-user-btn {
+            float: right;
+        }
     }
 
     .table-users {
@@ -24,5 +32,16 @@
                 }
             }
         }
+    }
+}
+
+.users-view {
+    .loading-container {
+        height: 264px;
+    }
+
+    .user-view {
+        margin: auto;
+        width: 200px;
     }
 }

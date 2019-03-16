@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
 import ListUsersEmpty from './ListUsersEmpty';
+import ViewUserModal from './ViewUserModal';
+import EditUserModal from './EditUserModal';
 import { history } from "../../routes/AppRouter";
-import {Pagination, Table, Avatar, Button} from 'antd';
-
+import { Pagination, Table, Avatar, Button } from 'antd';
 
 class ListUsers extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            users: []
+            users: [],
+            viewUserId: null,
+            editUser: null
         };
 
         this.showUsers.bind(this);
     }
+
+    viewUserModal = (key) => {
+        this.setState({
+            viewUserId: key
+        });
+    };
+
+    editUserModal = (user) => {
+        this.setState({
+            editUser: user
+        });
+    };
 
     componentDidMount() {
         this.setState({
@@ -46,17 +61,16 @@ class ListUsers extends Component {
             { title: 'Last Name', dataIndex: 'lastname', key: 'lastname' },
             { title: 'Avatar', dataIndex: 'avatar', key: 'avatar', align: 'center', render: (value) => { return <Avatar size={64} src={value} /> } },
             {
-                title: 'Actions', dataIndex: '', key: 'actions', align: 'center', render: () => {
+                title: 'Actions', dataIndex: '', key: 'actions', align: 'center', render: (value) => {
+                    let { key } = value;
+
                     return (
                         <div className="table-btns">
-                            <Button className="table-btn btn-view" onClick={this.viewUser} icon="eye">
+                            <Button className="table-btn btn-view" value={key} onClick={() => this.viewUserModal(key)} icon="eye">
                                 View
                             </Button>
-                            <Button className="table-btn btn-view" onClick={this.editUser} icon="edit">
+                            <Button className="table-btn btn-view" value={value} onClick={() => this.editUserModal(value)} icon="edit">
                                 Edit
-                            </Button>
-                            <Button className="table-btn btn-view" onClick={this.deleteUser} icon="delete">
-                                Delete
                             </Button>
                         </div>
                     )
@@ -90,10 +104,14 @@ class ListUsers extends Component {
 
     render() {
         const { users } = this.props;
+        const { viewUserId, editUser } = this.state;
 
         return (
             <div>
                 { users.data.length > 0 ? this.showUsers() : <ListUsersEmpty /> }
+
+                <ViewUserModal userId={viewUserId} />
+                <EditUserModal user={editUser} />
             </div>
         );
     }

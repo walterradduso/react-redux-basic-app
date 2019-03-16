@@ -14,14 +14,24 @@ class SiderMenu extends Component {
         }
     }
 
+    /**
+     * Collapse the left side menu.
+     * @param collapsed
+     */
     onCollapse = (collapsed) => {
         this.setState({ collapsed });
     };
 
+    /**
+     * Redirect to the list users
+     */
     routeUsers = () => {
         history.push('/users');
     };
 
+    /**
+     * Redirect to the create a new users
+     */
     routeNewUser = () => {
         history.push('/users/new');
     };
@@ -33,9 +43,11 @@ class SiderMenu extends Component {
         return (
             <Sider
                 className="sider-menu"
-                collapsible
+                breakpoint="md"
+                collapsedWidth="0"
                 collapsed={collapsed}
                 onCollapse={this.onCollapse}
+                width={150}
             >
                 <div className="logo" />
 

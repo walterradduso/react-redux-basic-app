@@ -2,8 +2,27 @@
     min-height: 100vh;
 
     .users-list, .users-new {
-        margin: 16px;
         padding: 24px;
         background: $white;
+    }
+
+    .table-users {
+        margin-bottom: 20px;
+
+        .table-btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .table-btn {
+                width: 94px;
+                margin-bottom: 5px;
+
+                &.btn-delete {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
 }

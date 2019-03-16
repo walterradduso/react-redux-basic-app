@@ -11,6 +11,10 @@ class Header extends Component {
         this.menu.bind(this);
     }
 
+    /**
+     * Content of the dropdown user menu.
+     * @returns JSX
+     */
     menu() {
         const { logout } = this.props;
 

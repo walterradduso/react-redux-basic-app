@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import SiderMenu from './SiderMenu';
+import Header from '../Header';
+import ListUsers from './ListUsers';
+import Loading from '../Loading';
+import SiderMenu from '../SiderMenu';
 import { connect } from 'react-redux';
+import { getUsers, nextUsers } from "../../actions/users";
 
 import { Layout } from 'antd';
 
@@ -17,8 +20,20 @@ class Users extends Component {
         }
     }
 
+    componentDidMount() {
+        let url = this.props.location.search;
+        let page = url.split("=");
+
+        if (url) {
+            this.props.nextUsers(page[1]);
+        } else {
+            this.props.getUsers();
+        }
+    }
+
     render() {
         const { menuSelected } = this.state;
+        const { users } = this.props;
 
         return (
             <Layout className="users">
@@ -28,7 +43,7 @@ class Users extends Component {
                     <Header />
 
                     <Content className="users-list">
-                        List of Users
+                        {users.length === 0 ? <Loading/> : <ListUsers users={users} />}
                     </Content>
                 </Layout>
             </Layout>
@@ -36,4 +51,8 @@ class Users extends Component {
     }
 }
 
-export default connect()(Users);
+const mapStateToProps = (state) => {
+    return { ...state };
+};
+
+export default connect(mapStateToProps, { getUsers, nextUsers })(Users);

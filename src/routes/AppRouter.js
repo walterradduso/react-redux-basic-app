@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 
-import Users from '../components/Users';
-import NewUser from '../components/NewUser';
+import Users from '../components/Users/Users';
+import NewUser from '../components/Users/NewUser';
 import NotFound from '../components/NotFound';
 import Login from '../components/Login';
 
@@ -19,6 +19,7 @@ const AppRouter = () => (
             <Switch>
                 <PublicRoute path="/" component={Login} exact={true} />
                 <PrivateRoute path="/users" component={Users} exact={true} />
+                <PrivateRoute path="/users:handle" component={Users} exact={true} />
                 <PrivateRoute path="/users/new" component={NewUser} exact={true} />
                 <Route component={NotFound} />
             </Switch>

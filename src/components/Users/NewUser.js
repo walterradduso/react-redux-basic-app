@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SiderMenu from "./SiderMenu";
-import Header from "./Header";
+import SiderMenu from "../SiderMenu";
+import Header from "../Header";
 
 import { Layout } from 'antd';
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ListUsersEmpty from './ListUsersEmpty';
-import ViewUser from './ViewUser';
+import ViewUserModal from './ViewUserModal';
+import EditUserModal from './EditUserModal';
 import { history } from "../../routes/AppRouter";
-import {Pagination, Table, Avatar, Button, Modal} from 'antd';
-
+import { Pagination, Table, Avatar, Button } from 'antd';
 
 class ListUsers extends Component {
     constructor(props) {
@@ -11,24 +11,22 @@ class ListUsers extends Component {
 
         this.state = {
             users: [],
-            visible: false,
-            userId: null
+            viewUserId: null,
+            editUser: null
         };
 
         this.showUsers.bind(this);
     }
 
-    showModal = (key) => {
+    viewUserModal = (key) => {
         this.setState({
-            visible: true,
-            userId: key
+            viewUserId: key
         });
     };
 
-    handleCancel = (e) => {
+    editUserModal = (user) => {
         this.setState({
-            visible: false,
-            userId: null
+            editUser: user
         });
     };
 
@@ -68,14 +66,11 @@ class ListUsers extends Component {
 
                     return (
                         <div className="table-btns">
-                            <Button className="table-btn btn-view" value={key} onClick={() => this.showModal(key)} icon="eye">
+                            <Button className="table-btn btn-view" value={key} onClick={() => this.viewUserModal(key)} icon="eye">
                                 View
                             </Button>
-                            <Button className="table-btn btn-view" onClick={this.editUser} icon="edit">
+                            <Button className="table-btn btn-view" value={value} onClick={() => this.editUserModal(value)} icon="edit">
                                 Edit
-                            </Button>
-                            <Button className="table-btn btn-view" onClick={this.deleteUser} icon="delete">
-                                Delete
                             </Button>
                         </div>
                     )
@@ -109,20 +104,14 @@ class ListUsers extends Component {
 
     render() {
         const { users } = this.props;
-        const { visible, userId } = this.state;
+        const { viewUserId, editUser } = this.state;
 
         return (
             <div>
                 { users.data.length > 0 ? this.showUsers() : <ListUsersEmpty /> }
 
-                <Modal
-                    visible={visible}
-                    centered
-                    onCancel={this.handleCancel}
-                    footer={false}
-                >
-                    <ViewUser userId={userId} />
-                </Modal>
+                <ViewUserModal userId={viewUserId} />
+                <EditUserModal user={editUser} />
             </div>
         );
     }

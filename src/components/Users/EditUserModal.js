@@ -44,7 +44,7 @@ class EditUserModal extends Component {
     }
 
     /**
-     * Update the input filename his value
+     * Update the input file name his value
      * @param event
      */
     handleFirstName(event) {
@@ -52,7 +52,7 @@ class EditUserModal extends Component {
     }
 
     /**
-     * Update the input lastname his value
+     * Update the input last name his value
      * @param event
      */
     handleLastName(event) {
@@ -60,7 +60,7 @@ class EditUserModal extends Component {
     }
 
     /**
-     * Update the user if every field is valid.
+     * Update the user if every field are valid.
      * @param e
      */
     handleEdit = (e) => {
@@ -104,7 +104,10 @@ class EditUserModal extends Component {
         const { visible } = this.state;
 
         const {
-            getFieldDecorator, getFieldsError, getFieldError, isFieldTouched,
+            getFieldDecorator,
+            getFieldsError,
+            getFieldError,
+            isFieldTouched,
         } = this.props.form;
 
         const firstNameError = isFieldTouched('firstName') && getFieldError('firstName');

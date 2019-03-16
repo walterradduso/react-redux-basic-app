@@ -19,7 +19,6 @@ const AppRouter = () => (
             <Switch>
                 <PublicRoute path="/" component={Login} exact={true} />
                 <PrivateRoute path="/users" component={Users} exact={true} />
-                <PrivateRoute path="/users:handle" component={Users} exact={true} />
                 <PrivateRoute path="/users/new" component={NewUser} exact={true} />
                 <Route component={NotFound} />
             </Switch>

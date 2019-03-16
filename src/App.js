@@ -15,10 +15,17 @@ class App extends Component {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 let user = firebase.auth().currentUser;
+                let email = user.email;
+
+                if (!user.email) {
+                    email = user.providerData.map(data => {
+                        return data.email;
+                    });
+                }
 
                 let userData = {
                     name: user.displayName,
-                    email: user.email,
+                    email,
                     photoUrl: user.photoURL,
                     emailVerified: user.emailVerified,
                     uid: user.uid,

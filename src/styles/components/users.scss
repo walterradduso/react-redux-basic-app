@@ -1,0 +1,9 @@
+.users {
+    min-height: 100vh;
+
+    .users-list, .users-new {
+        margin: 16px;
+        padding: 24px;
+        background: $white;
+    }
+}

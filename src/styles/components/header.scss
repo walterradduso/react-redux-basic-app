@@ -1,0 +1,41 @@
+.header-page {
+    background-color: $menu-bg;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    color: $white;
+
+    .header-user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .header-user-data {
+            display: flex;
+            flex-direction: column;
+            height: 20px;
+            line-height: 20px;
+            justify-content: center;
+            text-align: right;
+
+            .user-email {
+                color: $gray-9;
+                font-size: .9em;
+            }
+        }
+
+        .header-logout-btn {
+            height: 40px;
+            padding: 0 6px;
+            margin-right: 10px;
+            margin-left: 8px;
+        }
+    }
+}
+
+.header-menu-item {
+    &:hover {
+        background-color: $blue;
+        color: $white;
+    }
+}

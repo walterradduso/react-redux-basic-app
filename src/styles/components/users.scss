@@ -1,9 +1,13 @@
 .users {
     min-height: 100vh;
 
-    .users-list, .users-new {
+    .users-list {
         padding: 24px;
         background: $white;
+
+        .loading-container {
+            height: 100%;
+        }
     }
 
     .table-users {
@@ -28,6 +32,12 @@
 }
 
 .users-view {
-    margin: auto;
-    width: 200px;
+    .loading-container {
+        height: 264px;
+    }
+
+    .user-view {
+        margin: auto;
+        width: 200px;
+    }
 }

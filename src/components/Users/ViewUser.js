@@ -44,9 +44,9 @@ class ViewUser extends Component {
         }
 
         return (
-            <div>
+            <div className="users-view">
                 { getUser ?
-                <Card className="users-view" hoverable cover={<img alt="example" src={getUser.data.avatar} />}>
+                <Card className="user-view" hoverable cover={<img alt="example" src={getUser.data.avatar} />}>
                     <Meta className="text-center" title={title} />
                 </Card> : <Loading /> }
             </div>

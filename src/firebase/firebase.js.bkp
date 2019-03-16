@@ -2,12 +2,12 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const config = {
-    apiKey: "AIzaSyDwxs7a7QUMnZc_i_6q7VCp1nSYSHy3KzQ",
-    authDomain: "react-redux-firebase-wal.firebaseapp.com",
-    databaseURL: "https://react-redux-firebase-wal.firebaseio.com",
-    projectId: "react-redux-firebase-wal",
-    storageBucket: "react-redux-firebase-wal.appspot.com",
-    messagingSenderId: "419841904947"
+    apiKey: "complete-with-your-apiKey",
+    authDomain: "complete-with-your-authDomain",
+    databaseURL: "complete-with-your-databaseURL",
+    projectId: "complete-with-your-projectId",
+    storageBucket: "complete-with-your-storageBucket",
+    messagingSenderId: "complete-with-your-messagingSenderId"
 };
 
 firebase.initializeApp(config);

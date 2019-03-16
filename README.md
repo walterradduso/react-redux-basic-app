@@ -9,7 +9,7 @@ Technologies used:
 - React Router Dom
 - Redux
 
-API Endpoints from: https://reqres.in/
+API Endpoints from: https://reqres.in/.
   
 ## Getting Started  
   
@@ -24,4 +24,5 @@ To initialize the project you should:
 2. Run the following commands:
 	- `yarn`
 	- `yarn start`
-3. Use the application.
+3. Go to http://localhost:3000.
+4. Use the web application.
